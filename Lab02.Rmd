@@ -1,0 +1,90 @@
+---
+title: "Lab02"
+author: "Elijah Boulton"
+date: "January 24, 2019"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Task 1
+
+The working directory
+
+```{r}
+getwd()
+```
+
+# Task 2
+
+First six lines of data
+
+```{r}
+
+epagas = read.csv("EPAGAS.csv")
+head(epagas)
+```
+
+# Task 3
+
+Calculate z values
+
+```{r}
+mpg = epagas$MPG
+z = (mpg - mean(mpg))/sd(mpg)
+#print(mean(z)) #printed to verify results
+#print(sd(z)) #printed to verify results
+```
+Possible outliers
+
+```{r}
+print(mpg[abs(z) >= 2 & abs(z) <= 3])
+```
+
+Definite outliers
+
+```{r}
+print(mpg[abs(z) > 3])
+```
+
+Dotplot of MPG with outliers in red and possible outliers in blue
+
+```{r}
+library(lattice)
+
+mycolor= ifelse(abs(z) > 3, "Red",
+         ifelse(abs(z) >= 2 & abs(z) <= 3, "Blue", "Black"))
+
+dotplot(mpg, col = mycolor, main = "MPG with outliers")
+```
+
+# Task 4
+
+Fuck im almost done
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
