@@ -65,26 +65,31 @@ dotplot(mpg, col = mycolor, main = "MPG with outliers")
 
 # Task 4
 
-Fuck im almost done
+Boxplot of the data in mpg
 
 ```{r}
+boxplot(mpg, main = "Miles Per Gallon", notch = TRUE, horizontal = TRUE,
+        col = "Black")
+```
+
+According to Chebyshev's theorem, approximately 75% of the data should be within two standard deviations of the mean.
+
+The proportion of data that actually falls within two standard deviations of the mean
+
+```{r}
+temp = mpg[mpg >= mean(mpg) - 2*sd(mpg) &
+             mpg <= mean(mpg) + 2*sd(mpg)]
+
+percentData = length(temp)/length(mpg)
+
+print(percentData)
 
 ```
 
+Chebyshev's rule does not agree with the data seeing as it underestimates the proportion of the data within two standard deviations of the mean by 21%.
 
+According to the empirical rule, approximately 95% of the data should be within two standard deviations of the mean.
 
+The empirical rule slightly underestimates the cohesiveness of the data, but still fits pretty well.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The empirical rule is valid because it fits the data quite well, despite the relatively small sample size of only 100 measurements.
